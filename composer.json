@@ -1,0 +1,25 @@
+{
+  "name": "webstack/vroom-php",
+  "license": "proprietary",
+  "description": "Webstack Vroom",
+  "authors": [
+    {
+      "name": "Marco Wansinck",
+      "email": "marco@webstack.nl"
+    }
+  ],
+  "require": {
+    "php": "^7.3"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Webstack\\Vroom\\": ""
+    }
+  },
+  "config" : {
+    "sort-packages": true,
+    "lock": false
+  }
+}
