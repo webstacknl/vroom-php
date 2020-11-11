@@ -1,10 +1,10 @@
 <?php
 
-namespace Webstack\Vroom\Serializer;
+namespace Webstack\Vroom\Serializer\Normalizer;
 
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webstack\Vroom\Model\Location;
+use Webstack\Vroom\Resource\Location;
 
 /**
  * Class LocationNormalizer

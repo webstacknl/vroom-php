@@ -1,7 +1,8 @@
 <?php
 
-namespace Webstack\Vroom\Model;
+namespace Webstack\Vroom\Resource;
 
+use DateTime;
 use Webstack\Vroom\Traits\DescriptionTrait;
 use Webstack\Vroom\Traits\IdTrait;
 
@@ -21,8 +22,7 @@ class Step
     protected $type;
 
     /**
-     * TODO
-     * @var
+     * @var DateTime|int
      */
     protected $arrival;
 
@@ -71,8 +71,7 @@ class Step
     }
 
     /**
-     * TODO
-     * @return mixed
+     * @return DateTime|int
      */
     public function getArrival()
     {

@@ -1,12 +1,11 @@
 <?php
 
-namespace Webstack\Vroom\Serializer;
+namespace Webstack\Vroom\Serializer\Normalizer;
 
-use RuntimeException;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webstack\Vroom\Model\AbsoluteTimeWindow;
-use Webstack\Vroom\Model\Location;
-use Webstack\Vroom\Model\TimeWindowInterface;
+use Webstack\Vroom\Resource\AbsoluteTimeWindow;
+use Webstack\Vroom\Resource\RelativeTimeWindow;
+use Webstack\Vroom\Resource\TimeWindowInterface;
 
 /**
  * Class TimeWindowNormalizer
@@ -14,10 +13,10 @@ use Webstack\Vroom\Model\TimeWindowInterface;
 class TimeWindowNormalizer implements NormalizerInterface
 {
     /**
-     * @param Location $object
+     * @param TimeWindowInterface $object
      * @param string|null $format
      * @param array $context
-     * @return array
+     * @return array|null
      */
     public function normalize($object, $format = null, array $context = [])
     {
@@ -28,11 +27,18 @@ class TimeWindowNormalizer implements NormalizerInterface
             ];
         }
 
-        throw new RuntimeException('Not implemented');
+        if ($object instanceof RelativeTimeWindow) {
+            return [
+                $object->getStart(),
+                $object->getEnd()
+            ];
+        }
+
+        return null;
     }
 
     /**
-     * @param Location $data
+     * @param TimeWindowInterface $data
      * @param string|null $format
      * @return bool
      */

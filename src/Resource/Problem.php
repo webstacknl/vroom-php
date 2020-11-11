@@ -1,11 +1,6 @@
 <?php
 
-namespace Webstack\Vroom;
-
-use Webstack\Vroom\Model\Job;
-use Webstack\Vroom\Model\Options;
-use Webstack\Vroom\Model\Shipment;
-use Webstack\Vroom\Model\Vehicle;
+namespace Webstack\Vroom\Resource;
 
 /**
  * Class Problem

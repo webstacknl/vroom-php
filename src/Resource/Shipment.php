@@ -1,6 +1,6 @@
 <?php
 
-namespace Webstack\Vroom\Model;
+namespace Webstack\Vroom\Resource;
 
 /**
  * Class Shipment

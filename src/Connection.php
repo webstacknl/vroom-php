@@ -13,9 +13,16 @@ use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
-use Webstack\Vroom\Serializer\LocationNormalizer;
-use Webstack\Vroom\Serializer\OptionsNormalizer;
-use Webstack\Vroom\Serializer\TimeWindowNormalizer;
+use Webstack\Vroom\Exceptions\Exception;
+use Webstack\Vroom\Exceptions\InputException;
+use Webstack\Vroom\Exceptions\InternalException;
+use Webstack\Vroom\Exceptions\RoutingException;
+use Webstack\Vroom\Resource\Problem;
+use Webstack\Vroom\Resource\Solution;
+use Webstack\Vroom\Serializer\Normalizer\ArrivalNormalizer;
+use Webstack\Vroom\Serializer\Normalizer\LocationNormalizer;
+use Webstack\Vroom\Serializer\Normalizer\OptionsNormalizer;
+use Webstack\Vroom\Serializer\Normalizer\TimeWindowNormalizer;
 
 /**
  * Class Connection
@@ -36,29 +43,29 @@ class Connection
     }
 
     /**
-     * @param Problem $request
+     * @param Problem $problem
      * @return Solution
+     * @throws Exception
      * @throws SerializerExceptionInterface
      * @throws HttpClientExceptionInterface
      */
-    public function compute(Problem $request)
+    public function compute(Problem $problem)
     {
         $client = HttpClient::create();
 
         try {
-            $normalizers = [
+            $serializer = new Serializer([
                 new OptionsNormalizer(),
                 new TimeWindowNormalizer(),
                 new LocationNormalizer(),
+                new ArrivalNormalizer(),
                 new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), new PhpDocExtractor()),
                 new ArrayDenormalizer(),
-            ];
-
-            $serializer = new Serializer($normalizers, [
+            ], [
                 new JsonEncoder()
             ]);
 
-            $json = $serializer->normalize($request, null, [
+            $json = $serializer->normalize($problem, null, [
                 AbstractObjectNormalizer::SKIP_NULL_VALUES => true
             ]);
 
@@ -73,7 +80,14 @@ class Connection
             if (stripos($response->getHeaders(false)['content-type'][0], 'application/json') !== false) {
                 $result = $response->toArray(false);
 
-                throw new Exception($result['error'], $result['code'], $e);
+                switch ($result['code']) {
+                    case 1:
+                        throw new InternalException($result['error']);
+                    case 2:
+                        throw new InputException($result['error']);
+                    case 3:
+                        throw new RoutingException($result['error']);
+                }
             }
 
             throw new Exception($response->getContent(false), $response->getStatusCode(), $e);

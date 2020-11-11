@@ -1,10 +1,6 @@
 <?php
 
-namespace Webstack\Vroom;
-
-use Webstack\Vroom\Model\Route;
-use Webstack\Vroom\Model\Summary;
-use Webstack\Vroom\Model\Unassigned;
+namespace Webstack\Vroom\Resource;
 
 /**
  * Class Solution

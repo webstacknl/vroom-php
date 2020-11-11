@@ -1,6 +1,6 @@
 <?php
 
-namespace Webstack\Vroom;
+namespace Webstack\Vroom\Exceptions;
 
 use RuntimeException;
 

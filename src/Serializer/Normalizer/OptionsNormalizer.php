@@ -1,9 +1,9 @@
 <?php
 
-namespace Webstack\Vroom\Serializer;
+namespace Webstack\Vroom\Serializer\Normalizer;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webstack\Vroom\Model\Options;
+use Webstack\Vroom\Resource\Options;
 
 /**
  * Class OptionsNormalizer
