@@ -1,7 +1,9 @@
 {
   "name": "webstack/vroom-php",
-  "license": "proprietary",
-  "description": "Webstack Vroom",
+  "license": "MIT",
+  "description": "Vroom PHP",
+  "keywords": ["VROOM"],
+  "homepage": "https://webstack.nl",
   "authors": [
     {
       "name": "Marco Wansinck",
