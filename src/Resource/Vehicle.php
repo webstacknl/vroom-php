@@ -2,6 +2,7 @@
 
 namespace Webstack\Vroom\Resource;
 
+use Webstack\Vroom\Traits\DescriptionTrait;
 use Webstack\Vroom\Traits\IdTrait;
 
 /**
@@ -12,6 +13,7 @@ use Webstack\Vroom\Traits\IdTrait;
 class Vehicle
 {
     use IdTrait;
+    use DescriptionTrait;
 
     /**
      * @var string

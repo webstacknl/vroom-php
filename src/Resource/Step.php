@@ -17,6 +17,14 @@ class Step
     use DescriptionTrait;
 
     /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
      * @var string
      */
     protected $type;

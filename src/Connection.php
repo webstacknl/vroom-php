@@ -82,11 +82,11 @@ class Connection
 
                 switch ($result['code']) {
                     case 1:
-                        throw new InternalException($result['error']);
+                        throw new InternalException($result['error'], $result['code'], $e);
                     case 2:
-                        throw new InputException($result['error']);
+                        throw new InputException($result['error'], $result['code'], $e);
                     case 3:
-                        throw new RoutingException($result['error']);
+                        throw new RoutingException($result['error'], $result['code'], $e);
                 }
             }
 

@@ -10,12 +10,12 @@ namespace Webstack\Vroom\Resource;
 class Shipment
 {
     /**
-     * @var ShipmentStep
+     * @var Pickup
      */
     protected $pickup;
 
     /**
-     * @var ShipmentStep
+     * @var Delivery
      */
     protected $delivery;
 
@@ -35,33 +35,33 @@ class Shipment
     protected $priority = 0;
 
     /**
-     * @return ShipmentStep
+     * @return Pickup
      */
-    public function getPickup(): ShipmentStep
+    public function getPickup(): Pickup
     {
         return $this->pickup;
     }
 
     /**
-     * @param ShipmentStep $pickup
+     * @param Pickup $pickup
      */
-    public function setPickup(ShipmentStep $pickup): void
+    public function setPickup(Pickup $pickup): void
     {
         $this->pickup = $pickup;
     }
 
     /**
-     * @return ShipmentStep
+     * @return Delivery
      */
-    public function getDelivery(): ShipmentStep
+    public function getDelivery(): Delivery
     {
         return $this->delivery;
     }
 
     /**
-     * @param ShipmentStep $delivery
+     * @param Delivery $delivery
      */
-    public function setDelivery(ShipmentStep $delivery): void
+    public function setDelivery(Delivery $delivery): void
     {
         $this->delivery = $delivery;
     }
