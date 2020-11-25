@@ -173,6 +173,14 @@ class Vehicle
     }
 
     /**
+     * @param int $skill
+     */
+    public function addSkill(int $skill): void
+    {
+        $this->skills[] = $skill;
+    }
+
+    /**
      * @return TimeWindowInterface|null
      */
     public function getTimeWindow(): ?TimeWindowInterface

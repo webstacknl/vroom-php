@@ -49,6 +49,14 @@ class Solution
     }
 
     /**
+     * @return Summary
+     */
+    public function getSummary(): Summary
+    {
+        return $this->summary;
+    }
+
+    /**
      * @return Unassigned[]
      */
     public function getUnassigned(): array

@@ -18,7 +18,7 @@ class Route
     protected $steps;
 
     /**
-     * @var int
+     * @var int|null
      */
     protected $costs;
 
@@ -85,9 +85,9 @@ class Route
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCosts(): int
+    public function getCosts(): ?int
     {
         return $this->costs;
     }

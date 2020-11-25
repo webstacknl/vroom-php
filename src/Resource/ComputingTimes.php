@@ -3,9 +3,9 @@
 namespace Webstack\Vroom\Resource;
 
 /**
- * Class ComputingTime
+ * Class ComputingTimes
  */
-class ComputingTime
+class ComputingTimes
 {
     /**
      * @var int
