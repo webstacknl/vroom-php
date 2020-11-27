@@ -5,6 +5,7 @@ namespace Webstack\Vroom\Serializer\Normalizer;
 use DateTime;
 use Exception;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Webstack\Vroom\Util\DateTimeUtil;
 
 /**
  * Class ArrivalNormalizer
@@ -21,7 +22,7 @@ class ArrivalNormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $type, $format = null, array $context = [])
     {
-        return new DateTime('@'. $data);
+        return DateTimeUtil::fromUTC(new DateTime('@'. $data));
     }
 
     /**

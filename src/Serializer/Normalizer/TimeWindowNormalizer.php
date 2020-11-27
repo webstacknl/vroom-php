@@ -6,6 +6,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Webstack\Vroom\Resource\AbsoluteTimeWindow;
 use Webstack\Vroom\Resource\RelativeTimeWindow;
 use Webstack\Vroom\Resource\TimeWindowInterface;
+use Webstack\Vroom\Util\DateTimeUtil;
 
 /**
  * Class TimeWindowNormalizer
@@ -22,8 +23,8 @@ class TimeWindowNormalizer implements NormalizerInterface
     {
         if ($object instanceof AbsoluteTimeWindow) {
             return [
-                (int) $object->getStart()->format('U'),
-                (int) $object->getEnd()->format('U')
+                DateTimeUtil::toUTC($object->getStart())->getTimestamp(),
+                DateTimeUtil::toUTC($object->getEnd())->getTimestamp(),
             ];
         }
 
