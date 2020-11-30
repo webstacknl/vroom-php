@@ -99,6 +99,14 @@ class Shipment
     }
 
     /**
+     * @param int $skill
+     */
+    public function addSkill(int $skill): void
+    {
+        $this->skills[] = $skill;
+    }
+
+    /**
      * @return int
      */
     public function getPriority(): int
