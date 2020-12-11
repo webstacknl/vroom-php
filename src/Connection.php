@@ -35,11 +35,26 @@ class Connection
     protected $uri;
 
     /**
+     * @var int
+     */
+    protected $timeout = 300;
+
+    /**
      * @param string $uri
      */
     public function __construct(string $uri)
     {
         $this->uri = $uri;
+    }
+
+    /**
+     * Timeout in seconds
+     * 
+     * @param int $timeout
+     */
+    public function setTimeout(int $timeout)
+    {
+        $this->timeout = $timeout;
     }
 
     /**
@@ -70,7 +85,8 @@ class Connection
             ]);
 
             $response = $client->request('POST', $this->uri, [
-                'json' => $json
+                'json' => $json,
+                'timeout' => $this->timeout
             ]);
 
             return $serializer->deserialize($response->getContent(true), Solution::class, 'json');
