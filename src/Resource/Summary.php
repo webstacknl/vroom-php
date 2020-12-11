@@ -61,14 +61,14 @@ class Summary
     /**
      * @var int|null
      */
-    protected $costs;
+    protected $cost;
 
     /**
      * @return int|null
      */
-    public function getCosts(): ?int
+    public function getCost(): ?int
     {
-        return $this->costs;
+        return $this->cost;
     }
 
     /**

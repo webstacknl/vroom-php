@@ -20,7 +20,7 @@ class Route
     /**
      * @var int|null
      */
-    protected $costs;
+    protected $cost;
 
     /**
      * @var int
@@ -87,9 +87,9 @@ class Route
     /**
      * @return int|null
      */
-    public function getCosts(): ?int
+    public function getCost(): ?int
     {
-        return $this->costs;
+        return $this->cost;
     }
 
     /**
