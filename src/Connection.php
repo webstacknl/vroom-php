@@ -64,7 +64,7 @@ class Connection
      * @throws SerializerExceptionInterface
      * @throws HttpClientExceptionInterface
      */
-    public function compute(Problem $problem)
+    public function compute(Problem $problem): Solution
     {
         $client = HttpClient::create();
 
