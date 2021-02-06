@@ -3,7 +3,7 @@
 This package provides a PHP client for the VROOM [API](https://github.com/VROOM-Project/vroom/blob/master/docs/API.md) that implements the VROOM API structure while providing a Object Oriented way to communicate with it.
 
 ## Getting started
-Below is a simple example based on one vehicle having one job. 
+Below is a simple example based on one vehicle having one job.
 
 ```php
 <?php
@@ -44,7 +44,10 @@ print '</pre>';
 
 ## Tests
 
-*Coming soon*
+```
+composer install
+vendor/bin/phpunit
+```
 
 ## Issues
 
