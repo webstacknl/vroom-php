@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Webstack\Vroom\Exceptions\Exception;
 use Webstack\Vroom\Exceptions\InputException;
 use Webstack\Vroom\Exceptions\InternalException;
@@ -49,12 +50,22 @@ class Connection
 
     /**
      * Timeout in seconds
-     * 
+     *
      * @param int $timeout
      */
     public function setTimeout(int $timeout)
     {
         $this->timeout = $timeout;
+    }
+
+    /**
+     * Set the internal HttpClient
+     *
+     * @param HttpClientInterface $client
+     */
+    public function setClient(HttpClientInterface $client)
+    {
+        $this->client = $client;
     }
 
     /**
@@ -66,7 +77,7 @@ class Connection
      */
     public function compute(Problem $problem): Solution
     {
-        $client = HttpClient::create();
+        $client = $this->client ?? HttpClient::create();
 
         try {
             $serializer = new Serializer([
