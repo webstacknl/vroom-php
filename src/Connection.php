@@ -3,14 +3,6 @@
 namespace Webstack\Vroom;
 
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerExceptionInterface;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
-use Symfony\Component\Serializer\Serializer;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -20,10 +12,7 @@ use Webstack\Vroom\Exceptions\InternalException;
 use Webstack\Vroom\Exceptions\RoutingException;
 use Webstack\Vroom\Resource\Problem;
 use Webstack\Vroom\Resource\Solution;
-use Webstack\Vroom\Serializer\Normalizer\ArrivalNormalizer;
-use Webstack\Vroom\Serializer\Normalizer\LocationNormalizer;
-use Webstack\Vroom\Serializer\Normalizer\OptionsNormalizer;
-use Webstack\Vroom\Serializer\Normalizer\TimeWindowNormalizer;
+use Webstack\Vroom\Serializer;
 
 /**
  * Class Connection
@@ -80,20 +69,9 @@ class Connection
         $client = $this->client ?? HttpClient::create();
 
         try {
-            $serializer = new Serializer([
-                new OptionsNormalizer(),
-                new TimeWindowNormalizer(),
-                new LocationNormalizer(),
-                new ArrivalNormalizer(),
-                new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), new PhpDocExtractor()),
-                new ArrayDenormalizer(),
-            ], [
-                new JsonEncoder()
-            ]);
+            $serializer = new Serializer();
 
-            $json = $serializer->normalize($problem, null, [
-                AbstractObjectNormalizer::SKIP_NULL_VALUES => true
-            ]);
+            $json = $serializer->normalize($problem);
 
             $response = $client->request('POST', $this->uri, [
                 'json' => $json,
