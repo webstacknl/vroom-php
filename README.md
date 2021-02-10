@@ -3,17 +3,17 @@
 This package provides a PHP client for the VROOM [API](https://github.com/VROOM-Project/vroom/blob/master/docs/API.md) that implements the VROOM API structure while providing a Object Oriented way to communicate with it.
 
 ## Getting started
-Below is a simple example based on one vehicle having one job. 
+Below is a simple example based on one vehicle having one job.
 
 ```php
 <?php
 
 use Webstack\Vroom\Connection;
-use Webstack\Vroom\Model\Job;
-use Webstack\Vroom\Model\Location;
-use Webstack\Vroom\Model\Options;
-use Webstack\Vroom\Model\Problem;
-use Webstack\Vroom\Model\Vehicle;
+use Webstack\Vroom\Resource\Job;
+use Webstack\Vroom\Resource\Location;
+use Webstack\Vroom\Resource\Options;
+use Webstack\Vroom\Resource\Problem;
+use Webstack\Vroom\Resource\Vehicle;
 
 $problem = new Problem();
 
