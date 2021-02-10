@@ -44,7 +44,10 @@ print '</pre>';
 
 ## Tests
 
-*Coming soon*
+```
+composer install
+vendor/bin/phpunit
+```
 
 ## Issues
 
