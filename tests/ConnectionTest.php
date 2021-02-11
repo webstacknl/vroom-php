@@ -45,7 +45,6 @@ class ConnectionTest extends TestCase
 
         $solution = $this->connection->compute($problem);
 
-        $this->assertInstanceOf(Solution::class, $solution);
         $this->assertCount(2, $solution->getRoutes());
     }
 }
