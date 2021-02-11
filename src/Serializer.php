@@ -10,7 +10,6 @@ use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer as BaseSerializer;
-use Webstack\Vroom\Resource\Problem;
 use Webstack\Vroom\Serializer\Normalizer\ArrivalNormalizer;
 use Webstack\Vroom\Serializer\Normalizer\LocationNormalizer;
 use Webstack\Vroom\Serializer\Normalizer\OptionsNormalizer;
@@ -39,7 +38,7 @@ class Serializer extends BaseSerializer
     }
 
     /**
-     * @param Problem $data
+     * @param mixed $data
      * @param null $format
      * @param array $context
      * @return array

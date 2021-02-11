@@ -2,22 +2,34 @@
 
 namespace Webstack\Vroom\Tests;
 
-use Geocoder\Model\Coordinates;
+use DateTime;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerException;
 use Webstack\Vroom\Resource\Location;
 use Webstack\Vroom\Resource\AbsoluteTimeWindow;
 use Webstack\Vroom\Resource\RelativeTimeWindow;
 use Webstack\Vroom\Resource\Vehicle;
 use Webstack\Vroom\Serializer;
 
+/**
+ * Class SerializerTest
+ */
 class SerializerTest extends TestCase
 {
+    /**
+     * @var Serializer
+     */
+    private $serializer;
+
     public function setUp(): void
     {
         $this->serializer = new Serializer();
     }
 
-    public function testNormalizeVehicle()
+    /**
+     * @throws SerializerException
+     */
+    public function testNormalizeVehicle(): void
     {
         $vehicle = new Vehicle();
         $vehicle->setId(1);
@@ -48,10 +60,13 @@ class SerializerTest extends TestCase
         ], $this->serializer->normalize($vehicle));
     }
 
-    public function testNormalizeTimeWindow()
+    /**
+     * @throws SerializerException
+     */
+    public function testNormalizeTimeWindow(): void
     {
-        $start = new \DateTime('2021-02-06T12:30:00+00:00');
-        $end = new \DateTime('2021-02-06T14:30:00+00:00');
+        $start = new DateTime('2021-02-06T12:30:00+00:00');
+        $end = new DateTime('2021-02-06T14:30:00+00:00');
 
         $absoluteTimeWindow = new AbsoluteTimeWindow($start, $end);
 
