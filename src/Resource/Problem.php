@@ -38,7 +38,7 @@ class Problem
     /**
      * @param Vehicle $vehicle
      */
-    public function addVehicle(Vehicle $vehicle)
+    public function addVehicle(Vehicle $vehicle): void
     {
         $this->vehicles[] = $vehicle;
     }
@@ -46,7 +46,7 @@ class Problem
     /**
      * @param Job $job
      */
-    public function addJob(Job $job)
+    public function addJob(Job $job): void
     {
         $this->jobs[] = $job;
     }
@@ -54,7 +54,7 @@ class Problem
     /**
      * @param Shipment $shipment
      */
-    public function addShipment(Shipment $shipment)
+    public function addShipment(Shipment $shipment): void
     {
         $this->shipments[] = $shipment;
     }

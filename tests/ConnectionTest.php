@@ -1,19 +1,26 @@
 <?php
 
+
 namespace Webstack\Vroom\Tests;
 
-use Geocoder\Model\Coordinates;
 use PHPUnit\Framework\TestCase;
+use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientException;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
-use Webstack\Vroom\Resource\Job;
+use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerException;
 use Webstack\Vroom\Resource\Problem;
-use Webstack\Vroom\Resource\Solution;
-use Webstack\Vroom\Resource\Vehicle;
 use Webstack\Vroom\Connection;
 
+/**
+ * Class ConnectionTest
+ */
 class ConnectionTest extends TestCase
 {
+    /**
+     * @var Connection
+     */
+    private $connection;
+
     public function setUp(): void
     {
         $solution = file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_1_sol.json');
@@ -28,7 +35,11 @@ class ConnectionTest extends TestCase
         $this->connection->setClient($client);
     }
 
-    public function testCompute()
+    /**
+     * @throws SerializerException
+     * @throws HttpClientException
+     */
+    public function testCompute(): void
     {
         $problem = new Problem();
 

@@ -10,13 +10,20 @@ use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer as BaseSerializer;
+use Webstack\Vroom\Resource\Problem;
 use Webstack\Vroom\Serializer\Normalizer\ArrivalNormalizer;
 use Webstack\Vroom\Serializer\Normalizer\LocationNormalizer;
 use Webstack\Vroom\Serializer\Normalizer\OptionsNormalizer;
 use Webstack\Vroom\Serializer\Normalizer\TimeWindowNormalizer;
 
+/**
+ * Class Serializer
+ */
 class Serializer extends BaseSerializer
 {
+    /**
+     * Serializer constructor.
+     */
     public function __construct()
     {
         parent::__construct([
@@ -31,12 +38,19 @@ class Serializer extends BaseSerializer
         ]);
     }
 
-    public function normalize($object, $format = null, array $context = [])
+    /**
+     * @param Problem $data
+     * @param null $format
+     * @param array $context
+     * @return array
+     * @throws SerializerExceptionInterface
+     */
+    public function normalize($data, $format = null, array $context = [])
     {
         $context = array_merge($context, [
             AbstractObjectNormalizer::SKIP_NULL_VALUES => true
         ]);
 
-        return parent::normalize($object, $format, $context);
+        return parent::normalize($data, $format, $context);
     }
 }

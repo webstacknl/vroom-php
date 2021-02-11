@@ -3,7 +3,8 @@
 namespace Webstack\Vroom;
 
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientExceptionInterface;
+use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerException;
+use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientException;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Webstack\Vroom\Exceptions\Exception;
@@ -12,7 +13,6 @@ use Webstack\Vroom\Exceptions\InternalException;
 use Webstack\Vroom\Exceptions\RoutingException;
 use Webstack\Vroom\Resource\Problem;
 use Webstack\Vroom\Resource\Solution;
-use Webstack\Vroom\Serializer;
 
 /**
  * Class Connection
@@ -30,6 +30,11 @@ class Connection
     protected $timeout = 300;
 
     /**
+     * @var HttpClientInterface|null
+     */
+    private $client;
+
+    /**
      * @param string $uri
      */
     public function __construct(string $uri)
@@ -42,7 +47,7 @@ class Connection
      *
      * @param int $timeout
      */
-    public function setTimeout(int $timeout)
+    public function setTimeout(int $timeout): void
     {
         $this->timeout = $timeout;
     }
@@ -52,7 +57,7 @@ class Connection
      *
      * @param HttpClientInterface $client
      */
-    public function setClient(HttpClientInterface $client)
+    public function setClient(HttpClientInterface $client): void
     {
         $this->client = $client;
     }
@@ -60,9 +65,8 @@ class Connection
     /**
      * @param Problem $problem
      * @return Solution
-     * @throws Exception
-     * @throws SerializerExceptionInterface
-     * @throws HttpClientExceptionInterface
+     * @throws SerializerException
+     * @throws HttpClientException
      */
     public function compute(Problem $problem): Solution
     {
