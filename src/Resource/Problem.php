@@ -58,4 +58,12 @@ class Problem
     {
         $this->shipments[] = $shipment;
     }
+
+    /**
+     * @return Shipment[]
+     */
+    public function getShipments(): array
+    {
+        return $this->shipments;
+    }
 }
