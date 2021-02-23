@@ -120,17 +120,17 @@ class Step
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getService(): int
+    public function getService(): ?int
     {
         return $this->service;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getWaitingTime(): int
+    public function getWaitingTime(): ?int
     {
         return $this->waitingTime;
     }
