@@ -10,10 +10,8 @@ class OptionsNormalizer implements NormalizerInterface
     /**
      * @param Options     $object
      * @param string|null $format
-     *
-     * @return array
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): array
     {
         return array_filter([
             'g' => $object->getGeometry(),

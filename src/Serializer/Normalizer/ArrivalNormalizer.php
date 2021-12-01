@@ -14,11 +14,9 @@ class ArrivalNormalizer implements DenormalizerInterface
      * @param string $type
      * @param null   $format
      *
-     * @return DateTime
-     *
      * @throws Exception
      */
-    public function denormalize($data, $type, $format = null, array $context = [])
+    public function denormalize($data, $type, $format = null, array $context = []): DateTime
     {
         return DateTimeUtil::fromUTC(new DateTime('@'.$data));
     }
@@ -27,10 +25,8 @@ class ArrivalNormalizer implements DenormalizerInterface
      * @param mixed  $data
      * @param string $type
      * @param null   $format
-     *
-     * @return bool
      */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
         return 'DateTime' === $type && is_int($data) && $data > 604800;
     }

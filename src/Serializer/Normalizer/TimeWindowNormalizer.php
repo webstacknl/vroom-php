@@ -13,10 +13,8 @@ class TimeWindowNormalizer implements NormalizerInterface
     /**
      * @param TimeWindowInterface $object
      * @param string|null         $format
-     *
-     * @return array|null
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): ?array
     {
         if ($object instanceof AbsoluteTimeWindow) {
             return [

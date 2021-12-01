@@ -11,10 +11,8 @@ class LocationNormalizer implements NormalizerInterface, DenormalizerInterface
     /**
      * @param Location    $object
      * @param string|null $format
-     *
-     * @return array
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): array
     {
         return [
             $object->getLon(),
@@ -26,10 +24,8 @@ class LocationNormalizer implements NormalizerInterface, DenormalizerInterface
      * @param mixed  $data
      * @param string $type
      * @param null   $format
-     *
-     * @return Location
      */
-    public function denormalize($data, $type, $format = null, array $context = [])
+    public function denormalize($data, $type, $format = null, array $context = []): Location
     {
         return new Location($data[0], $data[1]);
     }
