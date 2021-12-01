@@ -5,21 +5,15 @@ namespace Webstack\Vroom\Tests;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerException;
-use Webstack\Vroom\Resource\Location;
 use Webstack\Vroom\Resource\AbsoluteTimeWindow;
+use Webstack\Vroom\Resource\Location;
 use Webstack\Vroom\Resource\RelativeTimeWindow;
 use Webstack\Vroom\Resource\Vehicle;
 use Webstack\Vroom\Serializer;
 
-/**
- * Class SerializerTest
- */
 class SerializerTest extends TestCase
 {
-    /**
-     * @var Serializer
-     */
-    private $serializer;
+    private Serializer $serializer;
 
     public function setUp(): void
     {
@@ -40,7 +34,7 @@ class SerializerTest extends TestCase
             'profile' => 'car',
             'start' => [
                 4.6311356,
-                52.1284105
+                52.1284105,
             ],
         ], $this->serializer->normalize($vehicle));
 
@@ -51,11 +45,11 @@ class SerializerTest extends TestCase
             'profile' => 'car',
             'start' => [
                 4.6311356,
-                52.1284105
+                52.1284105,
             ],
             'end' => [
                 4.6311356,
-                52.1284105
+                52.1284105,
             ],
         ], $this->serializer->normalize($vehicle));
     }

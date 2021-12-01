@@ -8,15 +8,12 @@ use Webstack\Vroom\Resource\RelativeTimeWindow;
 use Webstack\Vroom\Resource\TimeWindowInterface;
 use Webstack\Vroom\Util\DateTimeUtil;
 
-/**
- * Class TimeWindowNormalizer
- */
 class TimeWindowNormalizer implements NormalizerInterface
 {
     /**
      * @param TimeWindowInterface $object
-     * @param string|null $format
-     * @param array $context
+     * @param string|null         $format
+     *
      * @return array|null
      */
     public function normalize($object, $format = null, array $context = [])
@@ -31,7 +28,7 @@ class TimeWindowNormalizer implements NormalizerInterface
         if ($object instanceof RelativeTimeWindow) {
             return [
                 $object->getStart(),
-                $object->getEnd()
+                $object->getEnd(),
             ];
         }
 
@@ -40,8 +37,7 @@ class TimeWindowNormalizer implements NormalizerInterface
 
     /**
      * @param TimeWindowInterface $data
-     * @param string|null $format
-     * @return bool
+     * @param string|null         $format
      */
     public function supportsNormalization($data, $format = null): bool
     {

@@ -1,32 +1,25 @@
 <?php
 
-
 namespace Webstack\Vroom\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientException;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerException;
-use Webstack\Vroom\Resource\Problem;
+use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientException;
 use Webstack\Vroom\Connection;
+use Webstack\Vroom\Resource\Problem;
 
-/**
- * Class ConnectionTest
- */
 class ConnectionTest extends TestCase
 {
-    /**
-     * @var Connection
-     */
-    private $connection;
+    private Connection $connection;
 
     public function setUp(): void
     {
-        $solution = file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_1_sol.json');
-
         $responses = [
-            new MockResponse($solution)
+            new MockResponse(file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_1_sol.json')),
+            new MockResponse(file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_2_sol.json')),
+            new MockResponse(file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_3_sol.json')),
         ];
 
         $client = new MockHttpClient($responses);
@@ -41,10 +34,14 @@ class ConnectionTest extends TestCase
      */
     public function testCompute(): void
     {
-        $problem = new Problem();
-
-        $solution = $this->connection->compute($problem);
-
+        $solution = $this->connection->compute(new Problem());
         $this->assertCount(2, $solution->getRoutes());
+
+        $solution = $this->connection->compute(new Problem());
+        $this->assertCount(1, $solution->getRoutes());
+
+        $solution = $this->connection->compute(new Problem());
+        $this->assertCount(2, $solution->getRoutes());
+
     }
 }

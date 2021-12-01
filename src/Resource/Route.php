@@ -2,9 +2,6 @@
 
 namespace Webstack\Vroom\Resource;
 
-/**
- * Class Route
- */
 class Route
 {
     /**
@@ -13,7 +10,7 @@ class Route
     protected $vehicle;
 
     /**
-     * @var Step[]
+     * @var array<Step>
      */
     protected $steps;
 
@@ -43,18 +40,19 @@ class Route
     protected $priority;
 
     /**
-     * @var int[]
+     * @var array<int>
+     *
      * @deprecated
      */
     protected $amount;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $delivery;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $pickup;
 
@@ -68,64 +66,47 @@ class Route
      */
     protected $distance;
 
-    /**
-     * @return int
-     */
     public function getVehicle(): int
     {
         return $this->vehicle;
     }
 
     /**
-     * @return Step[]
+     * @return array<Step>
      */
     public function getSteps(): array
     {
         return $this->steps;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCost(): ?int
     {
         return $this->cost;
     }
 
-    /**
-     * @return int
-     */
     public function getService(): int
     {
         return $this->service;
     }
 
-    /**
-     * @return int
-     */
     public function getDuration(): int
     {
         return $this->duration;
     }
 
-    /**
-     * @return int
-     */
     public function getWaitingTime(): int
     {
         return $this->waitingTime;
     }
 
-    /**
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
     /**
-     * @return int[]
+     * @return array<int>
+     *
      * @deprecated
      */
     public function getAmount(): array
@@ -134,7 +115,7 @@ class Route
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getDelivery(): array
     {
@@ -142,24 +123,18 @@ class Route
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getPickup(): array
     {
         return $this->pickup;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGeometry(): ?string
     {
         return $this->geometry;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDistance(): ?int
     {
         return $this->distance;

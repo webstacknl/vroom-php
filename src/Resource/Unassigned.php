@@ -4,9 +4,6 @@ namespace Webstack\Vroom\Resource;
 
 use Webstack\Vroom\Traits\IdTrait;
 
-/**
- * Class Unassigned
- */
 class Unassigned
 {
     use IdTrait;
@@ -16,9 +13,6 @@ class Unassigned
      */
     protected $location;
 
-    /**
-     * @return Location
-     */
     public function getLocation(): Location
     {
         return $this->location;

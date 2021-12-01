@@ -6,30 +6,27 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Webstack\Vroom\Resource\Location;
 
-/**
- * Class LocationNormalizer
- */
 class LocationNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     /**
-     * @param Location $object
+     * @param Location    $object
      * @param string|null $format
-     * @param array $context
+     *
      * @return array
      */
     public function normalize($object, $format = null, array $context = [])
     {
         return [
             $object->getLon(),
-            $object->getLat()
+            $object->getLat(),
         ];
     }
 
     /**
-     * @param mixed $data
+     * @param mixed  $data
      * @param string $type
-     * @param null $format
-     * @param array $context
+     * @param null   $format
+     *
      * @return Location
      */
     public function denormalize($data, $type, $format = null, array $context = [])
@@ -38,9 +35,8 @@ class LocationNormalizer implements NormalizerInterface, DenormalizerInterface
     }
 
     /**
-     * @param Location $data
+     * @param Location    $data
      * @param string|null $format
-     * @return bool
      */
     public function supportsNormalization($data, $format = null): bool
     {
@@ -48,13 +44,12 @@ class LocationNormalizer implements NormalizerInterface, DenormalizerInterface
     }
 
     /**
-     * @param Location $data
-     * @param string $type
+     * @param Location    $data
+     * @param string      $type
      * @param string|null $format
-     * @return bool
      */
     public function supportsDenormalization($data, $type, $format = null): bool
     {
-        return $type === Location::class;
+        return Location::class === $type;
     }
 }

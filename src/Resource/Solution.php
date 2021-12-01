@@ -2,9 +2,6 @@
 
 namespace Webstack\Vroom\Resource;
 
-/**
- * Class Solution
- */
 class Solution
 {
     /**
@@ -23,41 +20,32 @@ class Solution
     protected $summary;
 
     /**
-     * @var Unassigned[]
+     * @var array<Unassigned>
      */
     protected $unassigned;
 
     /**
-     * @var Route[]
+     * @var array<Route>
      */
     protected $routes;
 
-    /**
-     * @return int
-     */
     public function getCode(): int
     {
         return $this->code;
     }
 
-    /**
-     * @return string|null
-     */
     public function getError(): ?string
     {
         return $this->error;
     }
 
-    /**
-     * @return Summary
-     */
     public function getSummary(): Summary
     {
         return $this->summary;
     }
 
     /**
-     * @return Unassigned[]
+     * @return array<Unassigned>
      */
     public function getUnassigned(): array
     {
@@ -65,7 +53,7 @@ class Solution
     }
 
     /**
-     * @return Route[]
+     * @return array<Route>
      */
     public function getRoutes(): array
     {

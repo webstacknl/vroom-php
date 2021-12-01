@@ -3,30 +3,29 @@
 namespace Webstack\Vroom\Resource;
 
 /**
- * Class Job
- *
- * @link https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#jobs
+ * @see https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#jobs
  */
 class Job extends ShipmentStep
 {
     /**
-     * @var int[]
+     * @var array<int>
+     *
      * @deprecated
      */
     protected $amount;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $delivery;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $pickup;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $skills;
 
@@ -36,7 +35,8 @@ class Job extends ShipmentStep
     protected $priority = 0;
 
     /**
-     * @return int[]
+     * @return array<int>
+     *
      * @deprecated
      */
     public function getAmount(): array
@@ -46,6 +46,7 @@ class Job extends ShipmentStep
 
     /**
      * @param int[] $amount
+     *
      * @deprecated
      */
     public function setAmount(array $amount): void
@@ -54,7 +55,7 @@ class Job extends ShipmentStep
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getDelivery(): array
     {
@@ -70,7 +71,7 @@ class Job extends ShipmentStep
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getPickup(): array
     {
@@ -86,7 +87,7 @@ class Job extends ShipmentStep
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getSkills(): array
     {
@@ -101,25 +102,16 @@ class Job extends ShipmentStep
         $this->skills = $skills;
     }
 
-    /**
-     * @param int $skill
-     */
     public function addSkill(int $skill): void
     {
         $this->skills[] = $skill;
     }
 
-    /**
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
-    /**
-     * @param int $priority
-     */
     public function setPriority(int $priority): void
     {
         $this->priority = $priority;

@@ -7,18 +7,13 @@ use Webstack\Vroom\Traits\DescriptionTrait;
 use Webstack\Vroom\Traits\IdTrait;
 
 /**
- * Class Step
- *
- * @link https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#steps
+ * @see https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#steps
  */
 class Step
 {
     use IdTrait;
     use DescriptionTrait;
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
@@ -46,12 +41,13 @@ class Step
 
     /**
      * @var int
+     *
      * @deprecated
      */
     protected $job;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $load;
 
@@ -70,9 +66,6 @@ class Step
      */
     protected $distance;
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
@@ -86,24 +79,17 @@ class Step
         return $this->arrival;
     }
 
-    /**
-     * @return int
-     */
     public function getDuration(): int
     {
         return $this->duration;
     }
 
-    /**
-     * @return Location
-     */
     public function getLocation(): Location
     {
         return $this->location;
     }
 
     /**
-     * @return int
      * @deprecated
      */
     public function getJob(): int
@@ -112,35 +98,25 @@ class Step
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getLoad(): array
     {
         return $this->load;
     }
 
-    /**
-     * @return int|null
-     */
     public function getService(): ?int
     {
         return $this->service;
     }
 
-    /**
-     * @return int|null
-     */
     public function getWaitingTime(): ?int
     {
         return $this->waitingTime;
     }
 
-    /**
-     * @return int
-     */
     public function getDistance(): int
     {
         return $this->distance;
     }
-
 }

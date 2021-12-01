@@ -7,32 +7,31 @@ use Exception;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Webstack\Vroom\Util\DateTimeUtil;
 
-/**
- * Class ArrivalNormalizer
- */
 class ArrivalNormalizer implements DenormalizerInterface
 {
     /**
-     * @param int $data
+     * @param int    $data
      * @param string $type
-     * @param null $format
-     * @param array $context
+     * @param null   $format
+     *
      * @return DateTime
+     *
      * @throws Exception
      */
     public function denormalize($data, $type, $format = null, array $context = [])
     {
-        return DateTimeUtil::fromUTC(new DateTime('@'. $data));
+        return DateTimeUtil::fromUTC(new DateTime('@'.$data));
     }
 
     /**
-     * @param mixed $data
+     * @param mixed  $data
      * @param string $type
-     * @param null $format
+     * @param null   $format
+     *
      * @return bool
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'DateTime' && is_int($data) && $data > 604800;
+        return 'DateTime' === $type && is_int($data) && $data > 604800;
     }
 }

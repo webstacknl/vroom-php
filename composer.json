@@ -18,6 +18,7 @@
     "symfony/serializer": "^4.4|^5.1"
   },
   "require-dev" : {
+    "friendsofphp/php-cs-fixer": "^3.3",
     "phpunit/phpunit": "^6.5.5|^7.0|^8.0|^9.3"
   },
   "autoload": {
@@ -27,7 +28,6 @@
     }
   },
   "config" : {
-    "sort-packages": true,
-    "lock": false
+    "sort-packages": true
   }
 }

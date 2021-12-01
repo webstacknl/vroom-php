@@ -5,8 +5,7 @@ namespace Webstack\Vroom\Resource;
 use Webstack\Vroom\Traits\DescriptionTrait;
 use Webstack\Vroom\Traits\IdTrait;
 
-/**
- * Class Break_
+/**_
  */
 class Break_
 {
@@ -14,42 +13,33 @@ class Break_
     use DescriptionTrait;
 
     /**
-     * @var TimeWindowInterface[]
+     * @var array<TimeWindowInterface>
      */
     protected $timeWindows = [];
 
     /**
-     * @var integer
+     * @var int
      */
     protected $service = 0;
 
     /**
-     * @return TimeWindowInterface[]
+     * @return array<TimeWindowInterface>
      */
     public function getTimeWindows(): array
     {
         return $this->timeWindows;
     }
 
-    /**
-     * @param TimeWindowInterface $timeWindow
-     */
     public function addTimeWindow(TimeWindowInterface $timeWindow): void
     {
         $this->timeWindows[] = $timeWindow;
     }
 
-    /**
-     * @return int
-     */
     public function getService(): int
     {
         return $this->service;
     }
 
-    /**
-     * @param int $service
-     */
     public function setService(int $service): void
     {
         $this->service = $service;

@@ -5,15 +5,8 @@ namespace Webstack\Vroom\Util;
 use DateTime;
 use DateTimeZone;
 
-/**
- * Class DateTimeUtil
- */
 class DateTimeUtil
 {
-    /**
-     * @param DateTime $dateTime
-     * @return DateTime
-     */
     public static function fromUTC(DateTime $dateTime): DateTime
     {
         $dateTime = clone $dateTime;
@@ -25,10 +18,7 @@ class DateTimeUtil
 
         return $localDateTime;
     }
-    /**
-     * @param DateTime $dateTime
-     * @return DateTime
-     */
+
     public static function toUTC(DateTime $dateTime): DateTime
     {
         $localDateTime = new DateTime();

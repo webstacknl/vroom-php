@@ -14,38 +14,21 @@ use Webstack\Vroom\Exceptions\RoutingException;
 use Webstack\Vroom\Resource\Problem;
 use Webstack\Vroom\Resource\Solution;
 
-/**
- * Class Connection
- */
 class Connection
 {
-    /**
-     * @var string
-     */
-    protected $uri;
+    protected ?string $uri = null;
 
-    /**
-     * @var int
-     */
-    protected $timeout = 300;
+    protected int $timeout = 300;
 
-    /**
-     * @var HttpClientInterface|null
-     */
-    private $client;
+    private ?HttpClientInterface $client = null;
 
-    /**
-     * @param string $uri
-     */
     public function __construct(string $uri)
     {
         $this->uri = $uri;
     }
 
     /**
-     * Timeout in seconds
-     *
-     * @param int $timeout
+     * Timeout in seconds.
      */
     public function setTimeout(int $timeout): void
     {
@@ -53,9 +36,7 @@ class Connection
     }
 
     /**
-     * Set the internal HttpClient
-     *
-     * @param HttpClientInterface $client
+     * Set the internal HttpClient.
      */
     public function setClient(HttpClientInterface $client): void
     {
@@ -63,8 +44,6 @@ class Connection
     }
 
     /**
-     * @param Problem $problem
-     * @return Solution
      * @throws SerializerException
      * @throws HttpClientException
      */
@@ -79,14 +58,14 @@ class Connection
 
             $response = $client->request('POST', $this->uri, [
                 'json' => $json,
-                'timeout' => $this->timeout
+                'timeout' => $this->timeout,
             ]);
 
             return $serializer->deserialize($response->getContent(true), Solution::class, 'json');
         } catch (HttpExceptionInterface $e) {
             $response = $e->getResponse();
 
-            if (stripos($response->getHeaders(false)['content-type'][0], 'application/json') !== false) {
+            if (false !== stripos($response->getHeaders(false)['content-type'][0], 'application/json')) {
                 $result = $response->toArray(false);
 
                 switch ($result['code']) {

@@ -2,9 +2,6 @@
 
 namespace Webstack\Vroom\Resource;
 
-/**
- * Class Summary
- */
 class Summary
 {
     /**
@@ -33,18 +30,19 @@ class Summary
     protected $priority;
 
     /**
-     * @var int[]
+     * @var array<int>
+     *
      * @deprecated
      */
     protected $amount;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $delivery;
 
     /**
-     * @var int[]
+     * @var array<int>
      */
     protected $pickup;
 
@@ -63,56 +61,38 @@ class Summary
      */
     protected $cost;
 
-    /**
-     * @return int|null
-     */
     public function getCost(): ?int
     {
         return $this->cost;
     }
 
-    /**
-     * @return int
-     */
     public function getUnassigned(): int
     {
         return $this->unassigned;
     }
 
-    /**
-     * @return int
-     */
     public function getService(): int
     {
         return $this->service;
     }
 
-    /**
-     * @return int
-     */
     public function getDuration(): int
     {
         return $this->duration;
     }
 
-    /**
-     * @return int
-     */
     public function getWaitingTime(): int
     {
         return $this->waitingTime;
     }
 
-    /**
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getAmount(): array
     {
@@ -120,7 +100,7 @@ class Summary
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getDelivery(): array
     {
@@ -128,24 +108,18 @@ class Summary
     }
 
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function getPickup(): array
     {
         return $this->pickup;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDistance(): ?int
     {
         return $this->distance;
     }
 
-    /**
-     * @return ComputingTimes
-     */
     public function getComputingTimes(): ComputingTimes
     {
         return $this->computingTimes;

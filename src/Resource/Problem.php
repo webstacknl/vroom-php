@@ -2,9 +2,6 @@
 
 namespace Webstack\Vroom\Resource;
 
-/**
- * Class Problem
- */
 class Problem
 {
     /**
@@ -13,47 +10,35 @@ class Problem
     protected $options;
 
     /**
-     * @var Vehicle[]
+     * @var array<Vehicle>
      */
     public $vehicles = [];
 
     /**
-     * @var Shipment[]
+     * @var array<Shipment>
      */
     protected $jobs = [];
 
     /**
-     * @var Shipment[]
+     * @var array<Shipment>
      */
     protected $shipments = [];
 
-    /**
-     * @param Options|null $options
-     */
     public function __construct(Options $options = null)
     {
         $this->options = $options;
     }
 
-    /**
-     * @param Vehicle $vehicle
-     */
     public function addVehicle(Vehicle $vehicle): void
     {
         $this->vehicles[] = $vehicle;
     }
 
-    /**
-     * @param Job $job
-     */
     public function addJob(Job $job): void
     {
         $this->jobs[] = $job;
     }
 
-    /**
-     * @param Shipment $shipment
-     */
     public function addShipment(Shipment $shipment): void
     {
         $this->shipments[] = $shipment;

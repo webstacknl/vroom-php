@@ -3,7 +3,7 @@
 namespace Webstack\Vroom\Resource;
 
 /**
- * Interface TimeWindowInterface
+ * Interface TimeWindowInterface.
  */
 interface TimeWindowInterface
 {

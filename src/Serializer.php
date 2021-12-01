@@ -15,14 +15,8 @@ use Webstack\Vroom\Serializer\Normalizer\LocationNormalizer;
 use Webstack\Vroom\Serializer\Normalizer\OptionsNormalizer;
 use Webstack\Vroom\Serializer\Normalizer\TimeWindowNormalizer;
 
-/**
- * Class Serializer
- */
 class Serializer extends BaseSerializer
 {
-    /**
-     * Serializer constructor.
-     */
     public function __construct()
     {
         parent::__construct([
@@ -33,21 +27,17 @@ class Serializer extends BaseSerializer
             new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), new PhpDocExtractor()),
             new ArrayDenormalizer(),
         ], [
-            new JsonEncoder()
+            new JsonEncoder(),
         ]);
     }
 
     /**
-     * @param mixed $data
-     * @param null $format
-     * @param array $context
-     * @return array
      * @throws SerializerExceptionInterface
      */
-    public function normalize($data, $format = null, array $context = [])
+    public function normalize($data, $format = null, array $context = []): array
     {
         $context = array_merge($context, [
-            AbstractObjectNormalizer::SKIP_NULL_VALUES => true
+            AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
         ]);
 
         return parent::normalize($data, $format, $context);
