@@ -1,11 +1,14 @@
 <?php
 
 $finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__ .'/src')
-    ->in(__DIR__ .'/tests');
+    ->in('src')
+    ->in('tests');
 
 return (new PhpCsFixer\Config())
     ->setRules([
+        'declare_strict_types' => true,
         '@Symfony' => true,
+        '@DoctrineAnnotation' => true,
     ])
+    ->setRiskyAllowed(true)
     ->setFinder($finder);
