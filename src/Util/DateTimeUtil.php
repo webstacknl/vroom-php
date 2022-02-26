@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Webstack\Vroom\Util;
 
 use DateTime;
@@ -13,8 +15,8 @@ class DateTimeUtil
         $dateTime->setTimezone(new DateTimeZone('UTC'));
 
         $localDateTime = new DateTime();
-        $localDateTime->setDate($dateTime->format('Y'), $dateTime->format('m'), $dateTime->format('d'));
-        $localDateTime->seTTime($dateTime->format('H'), $dateTime->format('i'), $dateTime->format('s'));
+        $localDateTime->setDate((int) $dateTime->format('Y'), (int) $dateTime->format('m'), (int) $dateTime->format('d'));
+        $localDateTime->seTTime((int) $dateTime->format('H'), (int) $dateTime->format('i'), (int) $dateTime->format('s'));
 
         return $localDateTime;
     }
@@ -23,8 +25,8 @@ class DateTimeUtil
     {
         $localDateTime = new DateTime();
         $localDateTime->setTimezone(new DateTimeZone('UTC'));
-        $localDateTime->setDate($dateTime->format('Y'), $dateTime->format('m'), $dateTime->format('d'));
-        $localDateTime->seTTime($dateTime->format('H'), $dateTime->format('i'), $dateTime->format('s'));
+        $localDateTime->setDate((int) $dateTime->format('Y'), (int) $dateTime->format('m'), (int) $dateTime->format('d'));
+        $localDateTime->seTTime((int) $dateTime->format('H'), (int) $dateTime->format('i'), (int) $dateTime->format('s'));
 
         return $localDateTime;
     }

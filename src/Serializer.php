@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Webstack\Vroom;
 
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
@@ -34,7 +36,7 @@ class Serializer extends BaseSerializer
     /**
      * @throws SerializerExceptionInterface
      */
-    public function normalize($data, $format = null, array $context = [])
+    public function normalize($data, string $format = null, array $context = []): array
     {
         $context = array_merge($context, [
             AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
