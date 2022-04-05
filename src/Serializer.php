@@ -35,8 +35,9 @@ class Serializer extends BaseSerializer
 
     /**
      * @throws SerializerExceptionInterface
+     * @noinspection PhpHierarchyChecksInspection
      */
-    public function normalize($data, string $format = null, array $context = []): array
+    public function normalize($data, string $format = null, array $context = [])
     {
         $context = array_merge($context, [
             AbstractObjectNormalizer::SKIP_NULL_VALUES => true,
