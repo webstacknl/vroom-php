@@ -24,6 +24,11 @@ class Route
     /**
      * @var int
      */
+    protected $setup;
+
+    /**
+     * @var int
+     */
     protected $service;
 
     /**
@@ -84,6 +89,11 @@ class Route
     public function getCost(): ?int
     {
         return $this->cost;
+    }
+
+    public function getSetup(): int
+    {
+        return $this->setup;
     }
 
     public function getService(): int

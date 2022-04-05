@@ -14,6 +14,11 @@ class Summary
     /**
      * @var int
      */
+    protected $setup;
+
+    /**
+     * @var int
+     */
     protected $service;
 
     /**
@@ -71,6 +76,11 @@ class Summary
     public function getUnassigned(): int
     {
         return $this->unassigned;
+    }
+
+    public function getSetup(): int
+    {
+        return $this->setup;
     }
 
     public function getService(): int

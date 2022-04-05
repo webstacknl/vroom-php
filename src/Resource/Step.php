@@ -56,6 +56,11 @@ class Step
     /**
      * @var int
      */
+    protected $setup;
+
+    /**
+     * @var int
+     */
     protected $service;
 
     /**
@@ -110,6 +115,11 @@ class Step
     public function getService(): ?int
     {
         return $this->service;
+    }
+
+    public function getSetup(): ?int
+    {
+        return $this->setup;
     }
 
     public function getWaitingTime(): ?int
