@@ -28,6 +28,11 @@ abstract class ShipmentStep
     /**
      * @var int|null
      */
+    protected $setup;
+
+    /**
+     * @var int|null
+     */
     protected $service;
 
     /**
@@ -53,6 +58,16 @@ abstract class ShipmentStep
     public function setLocationIndex(?int $locationIndex): void
     {
         $this->locationIndex = $locationIndex;
+    }
+
+    public function getSetup(): ?int
+    {
+        return $this->setup;
+    }
+
+    public function setSetup(?int $setup): void
+    {
+        $this->setup = $setup;
     }
 
     public function getService(): ?int
