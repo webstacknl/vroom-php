@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom;
 
+use ArrayObject;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerExceptionInterface;
@@ -35,9 +36,8 @@ class Serializer extends BaseSerializer
 
     /**
      * @throws SerializerExceptionInterface
-     * @noinspection PhpHierarchyChecksInspection
      */
-    public function normalize($data, string $format = null, array $context = [])
+    public function normalize(mixed $data, ?string $format = null, array $context = []): ArrayObject|array|string|int|float|bool|null
     {
         $context = array_merge($context, [
             AbstractObjectNormalizer::SKIP_NULL_VALUES => true,

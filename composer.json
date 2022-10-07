@@ -11,8 +11,9 @@
     }
   ],
   "require": {
-    "php": "^7.4|^8.0",
+    "php": "^8.0",
     "ext-json": "*",
+    "phpdocumentor/reflection-docblock": "^5.3",
     "symfony/http-client": "^5.4|^6.0",
     "symfony/property-info": "^5.4|^6.0",
     "symfony/serializer": "^5.4|^6.0"
