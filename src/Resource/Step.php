@@ -4,131 +4,45 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-use DateTime;
-use Webstack\Vroom\Traits\DescriptionTrait;
-use Webstack\Vroom\Traits\IdTrait;
-
 /**
  * @see https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#steps
  */
-class Step
+final class Step
 {
-    use IdTrait;
-    use DescriptionTrait;
+    public string $type;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    public int|\DateTime $arrival;
+
+    public int $duration;
+
+    public int $setup;
+
+    public int $service;
+
+    public int $waitingTime;
 
     /**
-     * @var string
+     * @var array<Violation>
      */
-    protected $type;
+    public array $violations;
+
+    public string $description;
+
+    public Location $location;
+
+    public int $locationIndex;
+
+    public int $id;
 
     /**
-     * @var DateTime|int
-     */
-    protected $arrival;
-
-    /**
-     * @var int
-     */
-    protected $duration;
-
-    /**
-     * @var Location
-     */
-    protected $location;
-
-    /**
-     * @var int
-     *
      * @deprecated
      */
-    protected $job;
+    public int $job;
 
     /**
      * @var array<int>
      */
-    protected $load;
+    public array $load;
 
-    /**
-     * @var int
-     */
-    protected $setup;
-
-    /**
-     * @var int
-     */
-    protected $service;
-
-    /**
-     * @var int
-     */
-    protected $waitingTime;
-
-    /**
-     * @var int
-     */
-    protected $distance;
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @return DateTime|int
-     */
-    public function getArrival()
-    {
-        return $this->arrival;
-    }
-
-    public function getDuration(): int
-    {
-        return $this->duration;
-    }
-
-    public function getLocation(): Location
-    {
-        return $this->location;
-    }
-
-    /**
-     * @deprecated
-     */
-    public function getJob(): int
-    {
-        return $this->job;
-    }
-
-    /**
-     * @return array<int>
-     */
-    public function getLoad(): array
-    {
-        return $this->load;
-    }
-
-    public function getService(): ?int
-    {
-        return $this->service;
-    }
-
-    public function getSetup(): ?int
-    {
-        return $this->setup;
-    }
-
-    public function getWaitingTime(): ?int
-    {
-        return $this->waitingTime;
-    }
-
-    public function getDistance(): int
-    {
-        return $this->distance;
-    }
+    public int $distance;
 }

@@ -4,92 +4,29 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-use Webstack\Vroom\Traits\DescriptionTrait;
-use Webstack\Vroom\Traits\IdTrait;
-
-/**
- * @see https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#shipments
- */
-abstract class ShipmentStep
+final class ShipmentStep
 {
-    use IdTrait;
-    use DescriptionTrait;
+    public int $id;
+
+    public string $description;
+
+    public Location $location;
+
+    public int $locationIndex;
+
+    public int $setup;
+
+    public int $service;
 
     /**
-     * @var Location|null
+     * @var array<TimeWindowInterface>
      */
-    protected $location;
+    public array $timeWindows;
 
-    /**
-     * @var int|null
-     */
-    protected $locationIndex;
-
-    /**
-     * @var int|null
-     */
-    protected $setup;
-
-    /**
-     * @var int|null
-     */
-    protected $service;
-
-    /**
-     * @var array<TimeWindowInterface>|null
-     */
-    protected $timeWindows;
-
-    public function getLocation(): ?Location
+    public function __construct(int $id)
     {
-        return $this->location;
-    }
-
-    public function setLocation(?Location $location): void
-    {
-        $this->location = $location;
-    }
-
-    public function getLocationIndex(): ?int
-    {
-        return $this->locationIndex;
-    }
-
-    public function setLocationIndex(?int $locationIndex): void
-    {
-        $this->locationIndex = $locationIndex;
-    }
-
-    public function getSetup(): ?int
-    {
-        return $this->setup;
-    }
-
-    public function setSetup(?int $setup): void
-    {
-        $this->setup = $setup;
-    }
-
-    public function getService(): ?int
-    {
-        return $this->service;
-    }
-
-    public function setService(?int $service): void
-    {
-        $this->service = $service;
-    }
-
-    /**
-     * @return array<TimeWindowInterface>|null
-     */
-    public function getTimeWindows(): ?array
-    {
-        return $this->timeWindows;
-    }
-
-    public function addTimeWindow(TimeWindowInterface $timeWindow): void
-    {
-        $this->timeWindows[] = $timeWindow;
+        if ($id) {
+            $this->id = $id;
+        }
     }
 }

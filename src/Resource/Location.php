@@ -4,41 +4,17 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-class Location
+final class Location
 {
-    /**
-     * @var float
-     */
-    protected $lon;
+    public float $lon;
 
-    /**
-     * @var float
-     */
-    protected $lat;
+    public float $lat;
 
-    public function __construct(float $lon = null, float $lat = null)
+    public function __construct(float $lon, float $lat)
     {
-        $this->lon = $lon;
-        $this->lat = $lat;
-    }
-
-    public function getLon(): float
-    {
-        return $this->lon;
-    }
-
-    public function setLon(float $lon): void
-    {
-        $this->lon = $lon;
-    }
-
-    public function getLat(): float
-    {
-        return $this->lat;
-    }
-
-    public function setLat(float $lat): void
-    {
-        $this->lat = $lat;
+        if ($lon && $lat) {
+            $this->lon = $lon;
+            $this->lat = $lat;
+        }
     }
 }

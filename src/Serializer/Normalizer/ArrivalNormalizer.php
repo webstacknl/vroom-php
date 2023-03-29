@@ -4,27 +4,22 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Serializer\Normalizer;
 
-use DateTime;
-use Exception;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Webstack\Vroom\Util\DateTimeUtil;
 
-class ArrivalNormalizer implements DenormalizerInterface
+final class ArrivalNormalizer implements DenormalizerInterface
 {
     /**
      * @param int $data
      *
-     * @throws Exception
+     * @throws \Exception
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): DateTime
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): \DateTime
     {
-        return DateTimeUtil::fromUTC(new DateTime('@'.$data));
+        return DateTimeUtil::fromUTC(new \DateTime('@'.$data));
     }
 
-    /**
-     * @param mixed $data
-     */
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
         return 'DateTime' === $type && is_int($data) && $data > 604800;
     }

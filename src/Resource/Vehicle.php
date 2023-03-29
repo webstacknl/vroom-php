@@ -4,177 +4,59 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-use Webstack\Vroom\Traits\DescriptionTrait;
-use Webstack\Vroom\Traits\IdTrait;
-
 /**
  * @see https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#vehicles
  */
-class Vehicle
+final class Vehicle
 {
-    use IdTrait;
-    use DescriptionTrait;
+    public int $id;
+
+    public string $profile;
+
+    public string $description;
+
+    public Location $start;
+
+    public int $startIndex;
+
+    public Location $end;
+
+    public int $endIndex;
 
     /**
-     * @var string
+     * @var array<int>
      */
-    protected $profile = 'car';
+    public array $capacity;
 
     /**
-     * @var Location|null
+     * @var array<Costs>
      */
-    protected $start;
+    public array $costs;
 
     /**
-     * @var int|null
+     * @var array<int>
      */
-    protected $start_index;
+    public array $skills;
+
+    public TimeWindowInterface $time_window;
 
     /**
-     * @var Location|null
+     * @var Break_[]
      */
-    protected $end;
+    public array $breaks;
 
-    /**
-     * @var int|null
-     */
-    protected $end_index;
+    public float $speedFactor;
 
-    /**
-     * @var array<int>|null
-     */
-    protected $capacity;
+    public int $maxTasks;
 
-    /**
-     * @var array<int>|null
-     */
-    protected $skills;
+    public int $maxTravelTime;
 
-    /**
-     * @var TimeWindowInterface|null
-     */
-    protected $time_window;
+    public array $steps;
 
-    /**
-     * @var Break_[]|null
-     */
-    protected $breaks;
-
-    public function getProfile(): string
+    public function __construct(int $id)
     {
-        return $this->profile;
-    }
-
-    public function setProfile(string $profile): void
-    {
-        $this->profile = $profile;
-    }
-
-    public function getStart(): ?Location
-    {
-        return $this->start;
-    }
-
-    public function setStart(?Location $start): void
-    {
-        $this->start = $start;
-    }
-
-    public function getStartIndex(): ?int
-    {
-        return $this->start_index;
-    }
-
-    public function setStartIndex(?int $start_index): void
-    {
-        $this->start_index = $start_index;
-    }
-
-    public function getEnd(): ?Location
-    {
-        return $this->end;
-    }
-
-    public function setEnd(?Location $end): void
-    {
-        $this->end = $end;
-    }
-
-    public function getEndIndex(): ?int
-    {
-        return $this->end_index;
-    }
-
-    public function setEndIndex(?int $end_index): void
-    {
-        $this->end_index = $end_index;
-    }
-
-    /**
-     * @return array<int>|null
-     */
-    public function getCapacity(): ?array
-    {
-        return $this->capacity;
-    }
-
-    /**
-     * @param int[]|null $capacity
-     */
-    public function setCapacity(?array $capacity): void
-    {
-        $this->capacity = $capacity;
-    }
-
-    /**
-     * @return array<int>|null
-     */
-    public function getSkills(): ?array
-    {
-        return $this->skills;
-    }
-
-    /**
-     * @param int[]|null $skills
-     */
-    public function setSkills(array $skills): void
-    {
-        $this->skills = $skills;
-    }
-
-    public function addSkill(int $skill): void
-    {
-        $this->skills[] = $skill;
-    }
-
-    public function getTimeWindow(): ?TimeWindowInterface
-    {
-        return $this->time_window;
-    }
-
-    public function setTimeWindow(?TimeWindowInterface $time_window): void
-    {
-        $this->time_window = $time_window;
-    }
-
-    /**
-     * @return Break_[]|null
-     */
-    public function getBreaks(): ?array
-    {
-        return $this->breaks;
-    }
-
-    /**
-     * @param Break_[]|null $breaks
-     */
-    public function setBreaks(?array $breaks): void
-    {
-        $this->breaks = $breaks;
-    }
-
-    public function addBreak(Break_ $break): void
-    {
-        $this->breaks[] = $break;
+        if ($id) {
+            $this->id = $id;
+        }
     }
 }

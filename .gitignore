@@ -4,6 +4,7 @@ composer.lock
 
 ###> phpunit/phpunit ###
 /phpunit.xml
+.phpunit.cache
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 

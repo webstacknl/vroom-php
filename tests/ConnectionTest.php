@@ -12,16 +12,16 @@ use Symfony\Contracts\HttpClient\Exception\ExceptionInterface as HttpClientExcep
 use Webstack\Vroom\Connection;
 use Webstack\Vroom\Resource\Problem;
 
-class ConnectionTest extends TestCase
+final class ConnectionTest extends TestCase
 {
     private Connection $connection;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $responses = [
-            new MockResponse(file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_1_sol.json')),
-            new MockResponse(file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_2_sol.json')),
-            new MockResponse(file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_3_sol.json')),
+            new MockResponse((string) file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_1_sol.json')),
+            new MockResponse((string) file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_2_sol.json')),
+            new MockResponse((string) file_get_contents('https://raw.githubusercontent.com/VROOM-Project/vroom/master/docs/example_3_sol.json')),
         ];
 
         $client = new MockHttpClient($responses);
@@ -37,12 +37,12 @@ class ConnectionTest extends TestCase
     public function testCompute(): void
     {
         $solution = $this->connection->compute(new Problem());
-        $this->assertCount(2, $solution->getRoutes());
+        $this->assertCount(2, $solution->routes);
 
         $solution = $this->connection->compute(new Problem());
-        $this->assertCount(1, $solution->getRoutes());
+        $this->assertCount(1, $solution->routes);
 
         $solution = $this->connection->compute(new Problem());
-        $this->assertCount(2, $solution->getRoutes());
+        $this->assertCount(2, $solution->routes);
     }
 }

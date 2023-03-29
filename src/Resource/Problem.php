@@ -4,53 +4,32 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-class Problem
+final class Problem
 {
+    public Options $options;
+
     /**
-     * @var Options
+     * @var array<Job>
      */
-    protected $options;
+    public array $jobs;
+
+    /**
+     * @var array<Shipment>
+     */
+    public array $shipments;
 
     /**
      * @var array<Vehicle>
      */
-    public $vehicles = [];
+    public array $vehicles;
 
     /**
-     * @var array<Shipment>
+     * @var array{string?: array{string: array{int, array{int, int}}}}
      */
-    protected $jobs = [];
+    public array $matrices;
 
-    /**
-     * @var array<Shipment>
-     */
-    protected $shipments = [];
-
-    public function __construct(Options $options = null)
+    public function __construct()
     {
-        $this->options = $options;
-    }
-
-    public function addVehicle(Vehicle $vehicle): void
-    {
-        $this->vehicles[] = $vehicle;
-    }
-
-    public function addJob(Job $job): void
-    {
-        $this->jobs[] = $job;
-    }
-
-    public function addShipment(Shipment $shipment): void
-    {
-        $this->shipments[] = $shipment;
-    }
-
-    /**
-     * @return Shipment[]
-     */
-    public function getShipments(): array
-    {
-        return $this->shipments;
+        $this->options = new Options();
     }
 }

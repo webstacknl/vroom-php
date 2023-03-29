@@ -4,33 +4,9 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-use DateTime;
-
-class AbsoluteTimeWindow implements TimeWindowInterface
+final class AbsoluteTimeWindow implements TimeWindowInterface
 {
-    /**
-     * @var DateTime
-     */
-    private $start;
+    public \DateTime $start;
 
-    /**
-     * @var DateTime
-     */
-    private $end;
-
-    public function __construct(DateTime $start, DateTime $end)
-    {
-        $this->start = $start;
-        $this->end = $end;
-    }
-
-    public function getStart(): DateTime
-    {
-        return $this->start;
-    }
-
-    public function getEnd(): DateTime
-    {
-        return $this->end;
-    }
+    public \DateTime $end;
 }

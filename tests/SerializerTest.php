@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Tests;
 
-use DateTime;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerException;
 use Webstack\Vroom\Resource\AbsoluteTimeWindow;
@@ -13,11 +12,11 @@ use Webstack\Vroom\Resource\RelativeTimeWindow;
 use Webstack\Vroom\Resource\Vehicle;
 use Webstack\Vroom\Serializer;
 
-class SerializerTest extends TestCase
+final class SerializerTest extends TestCase
 {
     private Serializer $serializer;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->serializer = new Serializer();
     }
@@ -27,24 +26,21 @@ class SerializerTest extends TestCase
      */
     public function testNormalizeVehicle(): void
     {
-        $vehicle = new Vehicle();
-        $vehicle->setId(1);
-        $vehicle->setStart(new Location(4.6311356, 52.1284105));
+        $vehicle = new Vehicle(1);
+        $vehicle->start = new Location(4.6311356, 52.1284105);
 
         $this->assertEquals([
             'id' => 1,
-            'profile' => 'car',
             'start' => [
                 4.6311356,
                 52.1284105,
             ],
         ], $this->serializer->normalize($vehicle));
 
-        $vehicle->setEnd(new Location(4.6311356, 52.1284105));
+        $vehicle->end = new Location(4.6311356, 52.1284105);
 
         $this->assertEquals([
             'id' => 1,
-            'profile' => 'car',
             'start' => [
                 4.6311356,
                 52.1284105,
@@ -61,17 +57,18 @@ class SerializerTest extends TestCase
      */
     public function testNormalizeTimeWindow(): void
     {
-        $start = new DateTime('2021-02-06T12:30:00+00:00');
-        $end = new DateTime('2021-02-06T14:30:00+00:00');
-
-        $absoluteTimeWindow = new AbsoluteTimeWindow($start, $end);
+        $absoluteTimeWindow = new AbsoluteTimeWindow();
+        $absoluteTimeWindow->start = new \DateTime('2021-02-06T12:30:00+00:00');
+        $absoluteTimeWindow->end = new \DateTime('2021-02-06T14:30:00+00:00');
 
         $this->assertEquals([
             1612614600,
             1612621800,
         ], $this->serializer->normalize($absoluteTimeWindow));
 
-        $relativeTimeWindow = new RelativeTimeWindow(0, 14400);
+        $relativeTimeWindow = new RelativeTimeWindow();
+        $relativeTimeWindow->start = 0;
+        $relativeTimeWindow->end = 14400;
 
         $this->assertEquals([
             0,

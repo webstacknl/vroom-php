@@ -4,19 +4,9 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-use Webstack\Vroom\Traits\IdTrait;
-
-class Unassigned
+final class Unassigned
 {
-    use IdTrait;
+    public int $id;
 
-    /**
-     * @var Location
-     */
-    protected $location;
-
-    public function getLocation(): Location
-    {
-        return $this->location;
-    }
+    public Location $location;
 }

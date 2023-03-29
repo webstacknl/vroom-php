@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-class Pickup extends ShipmentStep
+class Violation
 {
+    public string $cause;
+
+    public string $duration;
 }

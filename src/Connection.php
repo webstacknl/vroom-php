@@ -16,25 +16,19 @@ use Webstack\Vroom\Exceptions\RoutingException;
 use Webstack\Vroom\Resource\Problem;
 use Webstack\Vroom\Resource\Solution;
 
-class Connection
+final class Connection
 {
-    protected ?string $uri = null;
+    public string $uri;
 
-    protected int $timeout = 300;
+    public int $timeout = 300;
 
     private ?HttpClientInterface $client = null;
 
-    public function __construct(string $uri)
+    public function __construct(string $uri = null)
     {
-        $this->uri = $uri;
-    }
-
-    /**
-     * Timeout in seconds.
-     */
-    public function setTimeout(int $timeout): void
-    {
-        $this->timeout = $timeout;
+        if ($uri) {
+            $this->uri = $uri;
+        }
     }
 
     /**
@@ -63,24 +57,28 @@ class Connection
                 'timeout' => $this->timeout,
             ]);
 
-            return $serializer->deserialize($response->getContent(true), Solution::class, 'json');
-        } catch (HttpExceptionInterface $e) {
-            $response = $e->getResponse();
+            /** @var Solution $solution */
+            $solution = $serializer->deserialize($response->getContent(), Solution::class, 'json');
+            $solution->code = 0;
+
+            return $solution;
+        } catch (HttpExceptionInterface $httpException) {
+            $response = $httpException->getResponse();
 
             if (false !== stripos($response->getHeaders(false)['content-type'][0], 'application/json')) {
                 $result = $response->toArray(false);
 
                 switch ($result['code']) {
                     case 1:
-                        throw new InternalException($result['error'], $result['code'], $e);
+                        throw new InternalException($result['error'], $result['code'], $httpException);
                     case 2:
-                        throw new InputException($result['error'], $result['code'], $e);
+                        throw new InputException($result['error'], $result['code'], $httpException);
                     case 3:
-                        throw new RoutingException($result['error'], $result['code'], $e);
+                        throw new RoutingException($result['error'], $result['code'], $httpException);
                 }
             }
 
-            throw new Exception($response->getContent(false), $response->getStatusCode(), $e);
+            throw new Exception($response->getContent(false), $response->getStatusCode(), $httpException);
         }
     }
 }

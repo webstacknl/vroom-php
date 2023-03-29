@@ -7,115 +7,53 @@ namespace Webstack\Vroom\Resource;
 /**
  * @see https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#jobs
  */
-class Job extends ShipmentStep
+final class Job
 {
+    public int $id;
+
+    public string $description;
+
+    public Location $location;
+
+    public int $locationIndex;
+
+    public int $setup;
+
+    public int $service;
+
     /**
      * @var array<int>
      *
      * @deprecated
      */
-    protected $amount;
+    public array $amount;
 
     /**
      * @var array<int>
      */
-    protected $delivery;
+    public array $delivery;
 
     /**
      * @var array<int>
      */
-    protected $pickup;
+    public array $pickup;
 
     /**
      * @var array<int>
      */
-    protected $skills;
+    public array $skills;
+
+    public int $priority;
 
     /**
-     * @var int
+     * @var array<TimeWindowInterface>
      */
-    protected $priority = 0;
+    public array $timeWindows;
 
-    /**
-     * @return array<int>
-     *
-     * @deprecated
-     */
-    public function getAmount(): array
+    public function __construct(int $id)
     {
-        return $this->amount;
-    }
-
-    /**
-     * @param int[] $amount
-     *
-     * @deprecated
-     */
-    public function setAmount(array $amount): void
-    {
-        $this->amount = $amount;
-    }
-
-    /**
-     * @return array<int>
-     */
-    public function getDelivery(): array
-    {
-        return $this->delivery;
-    }
-
-    /**
-     * @param int[] $delivery
-     */
-    public function setDelivery(array $delivery): void
-    {
-        $this->delivery = $delivery;
-    }
-
-    /**
-     * @return array<int>
-     */
-    public function getPickup(): array
-    {
-        return $this->pickup;
-    }
-
-    /**
-     * @param int[] $pickup
-     */
-    public function setPickup(array $pickup): void
-    {
-        $this->pickup = $pickup;
-    }
-
-    /**
-     * @return array<int>
-     */
-    public function getSkills(): array
-    {
-        return $this->skills;
-    }
-
-    /**
-     * @param int[] $skills
-     */
-    public function setSkills(array $skills): void
-    {
-        $this->skills = $skills;
-    }
-
-    public function addSkill(int $skill): void
-    {
-        $this->skills[] = $skill;
-    }
-
-    public function getPriority(): int
-    {
-        return $this->priority;
-    }
-
-    public function setPriority(int $priority): void
-    {
-        $this->priority = $priority;
+        if ($id) {
+            $this->id = $id;
+        }
     }
 }

@@ -4,61 +4,19 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-class Solution
+final class Solution
 {
-    /**
-     * @var int
-     */
-    protected $code;
+    public int $code;
 
-    /**
-     * @var string|null
-     */
-    protected $error;
-
-    /**
-     * @var Summary
-     */
-    protected $summary;
+    public Summary $summary;
 
     /**
      * @var array<Unassigned>
      */
-    protected $unassigned;
+    public array $unassigned;
 
     /**
      * @var array<Route>
      */
-    protected $routes;
-
-    public function getCode(): int
-    {
-        return $this->code;
-    }
-
-    public function getError(): ?string
-    {
-        return $this->error;
-    }
-
-    public function getSummary(): Summary
-    {
-        return $this->summary;
-    }
-
-    /**
-     * @return array<Unassigned>
-     */
-    public function getUnassigned(): array
-    {
-        return $this->unassigned;
-    }
-
-    /**
-     * @return array<Route>
-     */
-    public function getRoutes(): array
-    {
-        return $this->routes;
-    }
+    public array $routes;
 }

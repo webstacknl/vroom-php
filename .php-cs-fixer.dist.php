@@ -8,7 +8,6 @@ return (new PhpCsFixer\Config())
     ->setRules([
         'declare_strict_types' => true,
         '@Symfony' => true,
-        '@DoctrineAnnotation' => true,
     ])
     ->setRiskyAllowed(true)
     ->setFinder($finder);
