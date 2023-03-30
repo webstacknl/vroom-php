@@ -17,22 +17,20 @@ use Webstack\Vroom\Resource\Vehicle;
 
 $problem = new Problem();
 
-$vehicle = new Vehicle();
-$vehicle->setId(1);
-$vehicle->setStart(new Location(4.6311356, 52.1284105));
-$vehicle->setEnd(new Location(4.6311356, 52.1284105));
-$vehicle->setCapacity([500]);
-$vehicle->setSkills([1]);
+$vehicle = new Vehicle(1);
+$vehicle->start = new Location(4.6311356, 52.1284105);
+$vehicle->end = new Location(4.6311356, 52.1284105);
+$vehicle->capacity = [500];
+$vehicle->skills = [1];
 
-$problem->addVehicle($vehicle);
+$problem->vehicles[] = $vehicle;
 
-$job = new Job();
-$job->setId(999);
-$job->setDescription('Example job');
-$job->setLocation(new Location(4.65546, 52.12917));
-$job->setSkills([1]);
+$job = new Job(999);
+$job->description = 'Example job';
+$job->location = new Location(4.65546, 52.12917);
+$job->skills = [1];
 
-$problem->addJob($job);
+$problem->jobs = [$job];
 
 $connection = new Connection('http://vroom:3000');
 $solution = $connection->compute($problem);
@@ -52,3 +50,9 @@ vendor/bin/phpunit
 ## Issues
 
 Feel free to submit any issues or enhancements.
+
+
+### UPGRADE FROM 2.0
+
+All resources objects have been updated to support Vroom 1.13 and properties are public now, removed all getters and setters.
+Dropped support for PHP <=8.1 and Symfony <=6.1
