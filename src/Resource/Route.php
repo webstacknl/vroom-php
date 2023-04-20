@@ -52,4 +52,9 @@ final class Route
     public string $geometry;
 
     public int $distance;
+
+    public function addStep(Step $step): void
+    {
+        $this->steps[] = $step;
+    }
 }

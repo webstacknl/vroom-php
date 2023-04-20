@@ -19,4 +19,14 @@ final class Solution
      * @var array<Route>
      */
     public array $routes;
+
+    public function addUnassigned(Unassigned $unassigned): void
+    {
+        $this->unassigned[] = $unassigned;
+    }
+
+    public function addRoute(Route $route): void
+    {
+        $this->routes[] = $route;
+    }
 }

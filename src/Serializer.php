@@ -10,6 +10,7 @@ use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerExcep
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer as BaseSerializer;
 use Webstack\Vroom\Serializer\Normalizer\ArrivalNormalizer;
@@ -25,6 +26,7 @@ final class Serializer extends BaseSerializer
             new LocationNormalizer(),
             new ArrivalNormalizer(),
             new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter(), new ReflectionExtractor()),
+            new ObjectNormalizer(null, null, null, new ReflectionExtractor()),
             new ArrayDenormalizer(),
         ], [
             new JsonEncoder(),

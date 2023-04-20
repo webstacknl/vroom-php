@@ -47,4 +47,9 @@ final class Summary
     public int $distance;
 
     public ComputingTimes $computingTimes;
+
+    public function addViolation(Violation $violation): void
+    {
+        $this->violations[] = $violation;
+    }
 }

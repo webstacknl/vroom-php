@@ -9,6 +9,8 @@ namespace Webstack\Vroom\Resource;
  */
 final class Step
 {
+    public ?int $id = null;
+
     public string $type;
 
     public int|\DateTime $arrival;
@@ -32,8 +34,6 @@ final class Step
 
     public int $locationIndex;
 
-    public int $id;
-
     /**
      * @deprecated
      */
@@ -45,4 +45,9 @@ final class Step
     public array $load;
 
     public int $distance;
+
+    public function addViolation(Violation $violation): void
+    {
+        $this->violations[] = $violation;
+    }
 }
