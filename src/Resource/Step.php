@@ -13,7 +13,7 @@ final class Step
 
     public string $type;
 
-    public int|\DateTime $arrival;
+    public int|\DateTimeImmutable $arrival;
 
     public int $duration;
 

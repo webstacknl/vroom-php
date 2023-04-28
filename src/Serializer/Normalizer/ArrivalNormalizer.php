@@ -14,13 +14,13 @@ final class ArrivalNormalizer implements DenormalizerInterface
      *
      * @throws \Exception
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): \DateTime
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): \DateTimeImmutable
     {
-        return DateTimeUtil::fromUTC(new \DateTime('@'.$data));
+        return DateTimeUtil::fromUTC(new \DateTimeImmutable('@'.$data));
     }
 
     public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
-        return 'DateTime' === $type && is_int($data) && $data > 604800;
+        return 'DateTimeImmutable' === $type && is_int($data) && $data > 604800;
     }
 }
