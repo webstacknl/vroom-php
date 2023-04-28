@@ -57,18 +57,14 @@ final class SerializerTest extends TestCase
      */
     public function testNormalizeTimeWindow(): void
     {
-        $absoluteTimeWindow = new AbsoluteTimeWindow();
-        $absoluteTimeWindow->start = new \DateTime('2021-02-06T12:30:00+00:00');
-        $absoluteTimeWindow->end = new \DateTime('2021-02-06T14:30:00+00:00');
+        $absoluteTimeWindow = new AbsoluteTimeWindow(new \DateTimeImmutable('2021-02-06T12:30:00+00:00'), new \DateTimeImmutable('2021-02-06T14:30:00+00:00'));
 
         $this->assertEquals([
             1612614600,
             1612621800,
         ], $this->serializer->normalize($absoluteTimeWindow));
 
-        $relativeTimeWindow = new RelativeTimeWindow();
-        $relativeTimeWindow->start = 0;
-        $relativeTimeWindow->end = 14400;
+        $relativeTimeWindow = new RelativeTimeWindow(0, 14400);
 
         $this->assertEquals([
             0,
