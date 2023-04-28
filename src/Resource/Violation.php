@@ -8,5 +8,5 @@ class Violation
 {
     public string $cause;
 
-    public string $duration;
+    public int $duration;
 }
