@@ -38,7 +38,7 @@ final class Vehicle
      */
     public array $skills;
 
-    public TimeWindowInterface $time_window;
+    public TimeWindowInterface $timeWindow;
 
     /**
      * @var Break_[]
