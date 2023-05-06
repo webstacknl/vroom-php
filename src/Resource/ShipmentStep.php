@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-final class ShipmentStep
+class ShipmentStep
 {
     public int $id;
 
@@ -25,8 +25,6 @@ final class ShipmentStep
 
     public function __construct(int $id)
     {
-        if ($id) {
-            $this->id = $id;
-        }
+        $this->id = $id;
     }
 }

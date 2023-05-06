@@ -7,20 +7,8 @@ namespace Webstack\Vroom\Resource;
 /**
  * @see https://github.com/VROOM-Project/vroom/blob/master/docs/API.md#jobs
  */
-final class Job
+final class Job extends ShipmentStep
 {
-    public int $id;
-
-    public string $description;
-
-    public Location $location;
-
-    public int $locationIndex;
-
-    public int $setup;
-
-    public int $service;
-
     /**
      * @var array<int>
      *
@@ -44,16 +32,4 @@ final class Job
     public array $skills;
 
     public int $priority;
-
-    /**
-     * @var array<TimeWindowInterface>
-     */
-    public array $timeWindows;
-
-    public function __construct(int $id)
-    {
-        if ($id) {
-            $this->id = $id;
-        }
-    }
 }

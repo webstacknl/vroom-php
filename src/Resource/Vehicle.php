@@ -55,8 +55,6 @@ final class Vehicle
 
     public function __construct(int $id)
     {
-        if ($id) {
-            $this->id = $id;
-        }
+        $this->id = $id;
     }
 }
