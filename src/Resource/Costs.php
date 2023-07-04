@@ -6,7 +6,7 @@ namespace Webstack\Vroom\Resource;
 
 class Costs
 {
-    public int $costs;
+    public int $fixed = 0;
 
     public int $perHour = 3600;
 }

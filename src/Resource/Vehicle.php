@@ -29,9 +29,9 @@ final class Vehicle
     public array $capacity;
 
     /**
-     * @var array<Costs>
+     * @var Costs
      */
-    public array $costs;
+    public Costs $costs;
 
     /**
      * @var array<int>
