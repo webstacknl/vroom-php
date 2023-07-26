@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Webstack\Vroom\Resource;
 
-final class Location
+final class Location implements \Stringable
 {
     public float $lon;
 
@@ -16,5 +16,13 @@ final class Location
             $this->lon = $lon;
             $this->lat = $lat;
         }
+    }
+
+    public function __toString(): string
+    {
+        return vsprintf('%f, %f', [
+            $this->lat,
+            $this->lon,
+        ]);
     }
 }
