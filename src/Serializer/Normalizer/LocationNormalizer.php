@@ -44,4 +44,14 @@ final class LocationNormalizer implements NormalizerInterface, DenormalizerInter
     {
         return Location::class === $type;
     }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            Location::class => false,
+        ];
+    }
 }

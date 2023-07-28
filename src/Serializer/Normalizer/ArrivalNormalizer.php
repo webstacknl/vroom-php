@@ -23,4 +23,14 @@ final class ArrivalNormalizer implements DenormalizerInterface
     {
         return 'DateTimeImmutable' === $type && is_int($data) && $data > 604800;
     }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            \DateTimeImmutable::class => false,
+        ];
+    }
 }

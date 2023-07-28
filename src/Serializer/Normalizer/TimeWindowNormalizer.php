@@ -41,4 +41,14 @@ final class TimeWindowNormalizer implements NormalizerInterface
     {
         return $data instanceof TimeWindowInterface;
     }
+
+    /**
+     * @return array<class-string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            TimeWindowInterface::class => false,
+        ];
+    }
 }
