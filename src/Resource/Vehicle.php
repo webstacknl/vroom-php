@@ -28,9 +28,6 @@ final class Vehicle
      */
     public array $capacity;
 
-    /**
-     * @var Costs
-     */
     public Costs $costs;
 
     /**
