@@ -48,6 +48,8 @@ final class Vehicle
 
     public int $maxTravelTime;
 
+    public int $maxDistance;
+
     public array $steps;
 
     public function __construct(int $id)
