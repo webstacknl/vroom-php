@@ -38,7 +38,7 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest]
         php-versions: [ '8.2', '8.3', '8.4', '8.5' ]
-        symfony: [ '7.4', '8.0', '8.1' ]
+        symfony: [ '6.4', '7.4', '8.0', '8.1' ]
         exclude:
           # Symfony 8.x requires PHP >= 8.4
           - php-versions: '8.2'
