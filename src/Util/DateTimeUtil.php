@@ -13,9 +13,8 @@ final class DateTimeUtil
 
         $localDateTime = new \DateTimeImmutable();
         $localDateTime = $localDateTime->setDate((int) $dateTime->format('Y'), (int) $dateTime->format('m'), (int) $dateTime->format('d'));
-        $localDateTime = $localDateTime->seTTime((int) $dateTime->format('H'), (int) $dateTime->format('i'), (int) $dateTime->format('s'));
 
-        return $localDateTime;
+        return $localDateTime->seTTime((int) $dateTime->format('H'), (int) $dateTime->format('i'), (int) $dateTime->format('s'));
     }
 
     public static function toUTC(\DateTimeImmutable $dateTime): \DateTimeImmutable
@@ -23,8 +22,7 @@ final class DateTimeUtil
         $localDateTime = new \DateTimeImmutable();
         $localDateTime = $localDateTime->setTimezone(new \DateTimeZone('UTC'));
         $localDateTime = $localDateTime->setDate((int) $dateTime->format('Y'), (int) $dateTime->format('m'), (int) $dateTime->format('d'));
-        $localDateTime = $localDateTime->seTTime((int) $dateTime->format('H'), (int) $dateTime->format('i'), (int) $dateTime->format('s'));
 
-        return $localDateTime;
+        return $localDateTime->seTTime((int) $dateTime->format('H'), (int) $dateTime->format('i'), (int) $dateTime->format('s'));
     }
 }

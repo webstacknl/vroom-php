@@ -6,13 +6,7 @@ namespace Webstack\Vroom\Resource;
 
 final class AbsoluteTimeWindow implements TimeWindowInterface
 {
-    public \DateTimeImmutable $start;
-
-    public \DateTimeImmutable $end;
-
-    public function __construct(\DateTimeImmutable $start, \DateTimeImmutable $end)
+    public function __construct(public \DateTimeImmutable $start, public \DateTimeImmutable $end)
     {
-        $this->start = $start;
-        $this->end = $end;
     }
 }

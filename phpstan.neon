@@ -3,5 +3,9 @@ parameters:
 	paths:
 		- src
 		- tests
-	checkMissingIterableValueType: false
-	checkGenericClassInNonGenericObjectType: false
+	ignoreErrors:
+		# PHPStan 2.0 removed the `checkMissingIterableValueType` and
+		# `checkGenericClassInNonGenericObjectType` parameters; keep the
+		# project's original opt-out by ignoring the equivalent identifiers.
+		- identifier: missingType.iterableValue
+		- identifier: missingType.generics

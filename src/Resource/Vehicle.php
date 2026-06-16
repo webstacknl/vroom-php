@@ -9,8 +9,6 @@ namespace Webstack\Vroom\Resource;
  */
 final class Vehicle
 {
-    public int $id;
-
     public string $profile;
 
     public string $description;
@@ -52,8 +50,7 @@ final class Vehicle
 
     public array $steps;
 
-    public function __construct(int $id)
+    public function __construct(public int $id)
     {
-        $this->id = $id;
     }
 }
