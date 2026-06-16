@@ -15,7 +15,7 @@ final class TimeWindowNormalizer implements NormalizerInterface
     /**
      * @param TimeWindowInterface $object
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): ?array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): ?array
     {
         if ($object instanceof AbsoluteTimeWindow) {
             return [
@@ -37,7 +37,7 @@ final class TimeWindowNormalizer implements NormalizerInterface
     /**
      * @param TimeWindowInterface $data
      */
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof TimeWindowInterface;
     }
