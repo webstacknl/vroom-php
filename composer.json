@@ -22,8 +22,9 @@
   },
   "require-dev" : {
     "friendsofphp/php-cs-fixer": "^3.15",
-    "phpstan/phpstan": "^1.8.7",
-    "phpunit/phpunit": "^9.5|^10.0",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^11.0",
+    "rector/rector": "^2.0",
     "symfony/var-dumper": "^6.4|^7.4|^8.0"
   },
   "autoload": {

@@ -6,13 +6,7 @@ namespace Webstack\Vroom\Resource;
 
 final class RelativeTimeWindow implements TimeWindowInterface
 {
-    public int $start;
-
-    public int $end;
-
-    public function __construct(int $start, int $end)
+    public function __construct(public int $start, public int $end)
     {
-        $this->start = $start;
-        $this->end = $end;
     }
 }

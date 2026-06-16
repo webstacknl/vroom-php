@@ -21,9 +21,6 @@ final class LocationNormalizer implements NormalizerInterface, DenormalizerInter
         ];
     }
 
-    /**
-     * @param Location $data
-     */
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof Location;

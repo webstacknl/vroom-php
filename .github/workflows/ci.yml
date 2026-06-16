@@ -91,10 +91,15 @@ jobs:
           composer config extra.symfony.require "${{ matrix.symfony }}.*"
           composer update --no-progress --no-scripts
 
-#      # —— PHPStan  ——————————————————————————————————————————————————————————
-#      - name: PHPStan (PHP Static Analysis)
-#        run: php vendor/phpstan/phpstan/phpstan.phar --memory-limit=1G
-
       # —— Run tests —————————————————————————————————————————————————————————
       - name: Run Tests
         run: php vendor/bin/phpunit
+
+      # —— PHPStan ———————————————————————————————————————————————————————————
+      # Run per Symfony/PHP combination so version-specific type issues surface.
+      - name: PHPStan (static analysis)
+        run: php vendor/bin/phpstan analyse --no-progress
+
+      # —— Rector ————————————————————————————————————————————————————————————
+      - name: Rector (dry-run)
+        run: php vendor/bin/rector process --dry-run --no-progress-bar

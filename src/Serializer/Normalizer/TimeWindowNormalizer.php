@@ -34,9 +34,6 @@ final class TimeWindowNormalizer implements NormalizerInterface
         return null;
     }
 
-    /**
-     * @param TimeWindowInterface $data
-     */
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof TimeWindowInterface;
