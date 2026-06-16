@@ -34,6 +34,8 @@ final class Serializer extends BaseSerializer
     }
 
     /**
+     * @return \ArrayObject<array-key, mixed>|array|string|int|float|bool|null
+     *
      * @throws SerializerExceptionInterface
      */
     public function normalize(mixed $data, ?string $format = null, array $context = []): \ArrayObject|array|string|int|float|bool|null
