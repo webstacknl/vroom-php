@@ -24,7 +24,7 @@ final class Connection
 
     private ?HttpClientInterface $client = null;
 
-    public function __construct(string $uri = null)
+    public function __construct(?string $uri = null)
     {
         if ($uri) {
             $this->uri = $uri;
