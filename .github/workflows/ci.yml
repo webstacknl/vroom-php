@@ -96,7 +96,6 @@ jobs:
         run: php vendor/bin/phpunit
 
       # —— PHPStan ———————————————————————————————————————————————————————————
-      # Run per Symfony/PHP combination so version-specific type issues surface.
       - name: PHPStan (static analysis)
         run: php vendor/bin/phpstan analyse --no-progress
 
