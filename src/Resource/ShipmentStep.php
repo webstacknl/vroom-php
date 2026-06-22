@@ -17,6 +17,16 @@ class ShipmentStep
     public int $service;
 
     /**
+     * @var array<string, int>
+     */
+    public array $setupPerType;
+
+    /**
+     * @var array<string, int>
+     */
+    public array $servicePerType;
+
+    /**
      * @var array<TimeWindowInterface>
      */
     public array $timeWindows;
