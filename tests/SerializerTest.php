@@ -7,6 +7,8 @@ namespace Webstack\Vroom\Tests;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Exception\ExceptionInterface as SerializerException;
 use Webstack\Vroom\Resource\AbsoluteTimeWindow;
+use Webstack\Vroom\Resource\Costs;
+use Webstack\Vroom\Resource\Job;
 use Webstack\Vroom\Resource\Location;
 use Webstack\Vroom\Resource\RelativeTimeWindow;
 use Webstack\Vroom\Resource\Vehicle;
@@ -70,5 +72,44 @@ final class SerializerTest extends TestCase
             0,
             14400,
         ], $this->serializer->normalize($relativeTimeWindow));
+    }
+
+    /**
+     * @throws SerializerException
+     */
+    public function testNormalizeVehicleTypeAndCosts(): void
+    {
+        $vehicle = new Vehicle(1);
+        $vehicle->type = 'truck';
+        $vehicle->costs = new Costs();
+        $vehicle->costs->perTaskHour = 1800;
+        $vehicle->costs->perKm = 100;
+
+        $this->assertEquals([
+            'id' => 1,
+            'costs' => [
+                'fixed' => 0,
+                'per_hour' => 3600,
+                'per_task_hour' => 1800,
+                'per_km' => 100,
+            ],
+            'type' => 'truck',
+        ], $this->serializer->normalize($vehicle));
+    }
+
+    /**
+     * @throws SerializerException
+     */
+    public function testNormalizeJobPerType(): void
+    {
+        $job = new Job(999);
+        $job->setupPerType = ['truck' => 120, 'bike' => 300];
+        $job->servicePerType = ['truck' => 60];
+
+        $this->assertEquals([
+            'id' => 999,
+            'setup_per_type' => ['truck' => 120, 'bike' => 300],
+            'service_per_type' => ['truck' => 60],
+        ], $this->serializer->normalize($job));
     }
 }

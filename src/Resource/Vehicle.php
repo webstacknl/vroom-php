@@ -33,6 +33,8 @@ final class Vehicle
      */
     public array $skills;
 
+    public string $type;
+
     public TimeWindowInterface $timeWindow;
 
     /**

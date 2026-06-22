@@ -6,7 +6,7 @@ namespace Webstack\Vroom\Resource;
 
 class VehicleStep
 {
-    public string $key;
+    public string $type;
 
     public int $id;
 
